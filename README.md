@@ -26,13 +26,13 @@ Here, I provide examples of Common Table Expressions (CTEs) that showcase how to
 
 This section focuses on window functions, where I illustrate their application in performing calculations across rows, allowing for advanced data analysis without losing row context.
 
-![Window Functions](./Window%20Functions/)
+![Window Functions](./Window-Functions.png)
 
 ### Aggregate Functions
 
 I have included various examples of aggregate functions, highlighting their importance in summarizing data and generating insightful reports.
 
-![Aggregate Functions](./)
+![Aggregate Functions](./Aggregate_Functions.png)
 
 ### Joins
 
