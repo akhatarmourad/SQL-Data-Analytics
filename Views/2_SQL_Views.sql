@@ -28,3 +28,13 @@ SELECT * FROM order_details_view;
 
 -- Delete a view
 DROP VIEW order_details_view;
+
+-- Updatable Views
+CREATE OR REPLACE VIEW expensive_products AS
+SELECT * FROM tb_product_info p WHERE p.price > 1000;
+
+SELECT * FROM expensive_products;
+
+UPDATE expensive_products SET prod_name = 'Dell Latitude XPS 17', brand = 'Dell Technologies' WHERE prod_id = 'P4';
+
+SELECT * FROM expensive_products;
