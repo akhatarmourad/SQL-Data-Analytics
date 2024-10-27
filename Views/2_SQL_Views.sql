@@ -38,3 +38,10 @@ SELECT * FROM expensive_products;
 UPDATE expensive_products SET prod_name = 'Dell Latitude XPS 17', brand = 'Dell Technologies' WHERE prod_id = 'P4';
 
 SELECT * FROM expensive_products;
+
+-- WITH OPTION CHECK 
+CREATE OR REPLACE VIEW apple_products AS
+SELECT * FROM tb_product_info p WHERE p.brand = 'Apple'
+WITH OPTION CHECK;
+
+SELECT * FROM apple_products;
