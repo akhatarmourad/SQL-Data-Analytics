@@ -26,7 +26,20 @@ WITH RECURSIVE manager_employees AS
 	(
 		SELECT id, name, manager_id, 1 AS level FROM emp_details WHERE name = 'Asha'
 		UNION ALL
-		SELECT ED.id, ED.name, ED.manager_id, (level + 1) AS level FROM manager_employees ME JOIN emp_details ED ON ME.id = ED.manager_id
+		SELECT ED.id, ED.name, ED.manager_id, (ME.level + 1) AS level FROM manager_employees ME JOIN emp_details ED ON ME.id = ED.manager_id
 	)
 
-SELECT * FROM manager_employees;
+SELECT ME.id, ME.name, ME.manager_id, ME.level, ED.name FROM manager_employees ME JOIN emp_details ED ON ME.manager_id = ED.id;
+
+-- Question 3 : Find managers hierarchy for a given employee
+WITH RECURSIVE employee_managers AS
+	(
+		SELECT E2.id AS id, E2.name AS manager_name, E2.designation, E2.manager_id
+			FROM emp_details E1 RIGHT JOIN emp_details E2 ON E1.manager_id = E2.id WHERE E1.name = 'David'
+		UNION 
+		SELECT ED.id, ED.name AS manager_name, ED.designation, ED.manager_id
+			FROM employee_managers EM
+				JOIN emp_details ED ON EM.manager_id = ED.id
+	)
+
+SELECT * FROM employee_managers;
